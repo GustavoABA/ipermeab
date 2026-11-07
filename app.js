@@ -31,27 +31,41 @@
     });
   }
 
-  // Tabs de soluções com navegação por teclado e sem perda de foco.
+  // Navegação profunda das abas: cada solução tem seu próprio endereço compartilhável.
   const tabs = Array.from(document.querySelectorAll(".solution-tab"));
   const panels = Array.from(document.querySelectorAll(".solution-panel"));
+  const solutionSection = document.querySelector("#solucoes");
+  const solutionKeys = new Set(tabs.map((tab) => tab.dataset.solution));
+  let activeSolution = tabs.find((tab) => tab.getAttribute("aria-selected") === "true")?.dataset.solution || "piscinas";
 
-  function activateSolution(key, focus = false) {
+  function activateSolution(key, { focus = false, updateURL = false, scroll = false } = {}) {
     const selected = tabs.find((tab) => tab.dataset.solution === key);
     if (!selected) return;
+    activeSolution = key;
     tabs.forEach((tab) => {
-      const isActive = tab === selected;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", String(isActive));
-      tab.tabIndex = isActive ? 0 : -1;
+      const on = tab === selected;
+      tab.classList.toggle("is-active", on);
+      tab.setAttribute("aria-selected", String(on));
+      tab.tabIndex = on ? 0 : -1;
     });
     panels.forEach((panel) => {
       panel.hidden = panel.dataset.panel !== key;
     });
+    if (updateURL) {
+      const anchor = "#solucao-" + key;
+      if (window.location.hash !== anchor) window.history.pushState(null, "", anchor);
+    }
     if (focus) selected.focus();
+    if (scroll && solutionSection) solutionSection.scrollIntoView({ behavior: smooth, block: "start" });
+  }
+
+  function solutionFromHash() {
+    const fragment = decodeURIComponent(window.location.hash.slice(1));
+    return fragment.startsWith("solucao-") ? fragment.slice("solucao-".length) : null;
   }
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateSolution(tab.dataset.solution));
+    tab.addEventListener("click", () => activateSolution(tab.dataset.solution, { updateURL: true }));
     tab.addEventListener("keydown", (event) => {
       const last = tabs.length - 1;
       let nextIndex = index;
@@ -61,14 +75,66 @@
       else if (event.key === "End") nextIndex = last;
       else return;
       event.preventDefault();
-      activateSolution(tabs[nextIndex].dataset.solution, true);
+      activateSolution(tabs[nextIndex].dataset.solution, { focus: true, updateURL: true });
       tabs[nextIndex].scrollIntoView({ behavior: smooth, block: "nearest", inline: "nearest" });
     });
   });
 
   document.querySelectorAll("[data-go-solution]").forEach((link) => {
-    link.addEventListener("click", () => {
-      activateSolution(link.dataset.goSolution);
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      activateSolution(link.dataset.goSolution, { updateURL: true, scroll: true });
+      closeMenu();
+    });
+  });
+
+  function syncSolutionFromAddress(scroll = false) {
+    const key = solutionFromHash();
+    if (solutionKeys.has(key)) activateSolution(key, { scroll });
+  }
+  syncSolutionFromAddress();
+  window.addEventListener("hashchange", () => syncSolutionFromAddress(true));
+  window.addEventListener("popstate", () => syncSolutionFromAddress(true));
+  window.addEventListener("load", () => {
+    if (solutionKeys.has(solutionFromHash())) syncSolutionFromAddress(true);
+  });
+
+  // A URL acompanha a área visível, sem recarregar a página e sem inflar o histórico.
+  const sectionIDs = ["inicio", "atendimento", "solucoes", "beneficios", "produtos", "sobre", "marcas", "duvidas", "contato"];
+  const sections = sectionIDs.map((id) => document.getElementById(id)).filter(Boolean);
+  let sectionFrame = 0;
+  function syncVisibleSection() {
+    sectionFrame = 0;
+    const marker = window.scrollY + window.innerHeight * 0.38;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top + window.scrollY <= marker) current = section;
+      else break;
+    }
+    if (!current) return;
+    const anchor = current.id === "solucoes" ? "#solucao-" + activeSolution : "#" + current.id;
+    if (window.location.hash !== anchor) window.history.replaceState(null, "", anchor);
+  }
+  window.addEventListener("scroll", () => {
+    if (!sectionFrame) sectionFrame = window.requestAnimationFrame(syncVisibleSection);
+  }, { passive: true });
+
+  // Copiar o endereço direto do setor/aba usando o navegador.
+  document.querySelectorAll("[data-copy-link]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const key = button.dataset.copyLink;
+      const anchor = key === "current-solution" || key === "solucoes"
+        ? "#solucao-" + activeSolution : "#" + key;
+      const url = new URL(window.location.href);
+      url.hash = anchor;
+      try {
+        await navigator.clipboard.writeText(url.href);
+        const previous = button.textContent;
+        button.textContent = "Link copiado!";
+        window.setTimeout(() => { button.textContent = previous; }, 2000);
+      } catch {
+        window.prompt("Copie o link desta área:", url.href);
+      }
     });
   });
 
@@ -89,35 +155,21 @@
     });
   });
 
-  // Mensagens do WhatsApp só são abertas quando um número verdadeiro
-  // foi configurado pelo proprietário em config.js.
-  const status = document.querySelector("#contact-status");
-  const contactSection = document.querySelector("#contato");
-  const cleanPhone = (value) => String(value || "").replace(/\D/g, "");
-  const validPhone = (value) => /^55\d{10,11}$/.test(cleanPhone(value));
-  const baseMessages = {
-    sales: "Olá! Gostaria de informações sobre os produtos e soluções de impermeabilização.",
-    technical: "Olá! Gostaria de orientação técnica para um sistema de impermeabilização."
+  // Atendimento será habilitado posteriormente. Não expor configurações internas ao visitante.
+  const comingSoonDialog = document.querySelector("#coming-soon-dialog");
+  const openComingSoon = () => {
+    if (comingSoonDialog && typeof comingSoonDialog.showModal === "function") {
+      if (!comingSoonDialog.open) comingSoonDialog.showModal();
+    } else {
+      window.alert("Em breve! Nosso atendimento estará disponível em breve.");
+    }
   };
-  const salesNumber = config.whatsappVendas;
-  const techNumber = config.whatsappTecnico || salesNumber;
-
-  function showContactFeedback(message) {
-    if (status) status.textContent = message;
-    if (contactSection) contactSection.scrollIntoView({ behavior: smooth, block: "start" });
-  }
-
   document.querySelectorAll("[data-contact]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const type = button.dataset.contact === "technical" ? "technical" : "sales";
-      const number = type === "technical" ? techNumber : salesNumber;
-      if (!validPhone(number)) {
-        showContactFeedback("WhatsApp ainda não cadastrado. Configure os canais oficiais em config.js.");
-        return;
-      }
-      const url = "https://wa.me/" + cleanPhone(number) + "?text=" + encodeURIComponent(baseMessages[type]);
-      window.open(url, "_blank", "noopener,noreferrer");
-    });
+    button.addEventListener("click", openComingSoon);
+  });
+  comingSoonDialog?.querySelector("[data-close-dialog]")?.addEventListener("click", () => comingSoonDialog.close());
+  comingSoonDialog?.addEventListener("click", (event) => {
+    if (event.target === comingSoonDialog) comingSoonDialog.close();
   });
 
   // Informações publicadas somente se forem preenchidas pelo responsável.
@@ -160,6 +212,90 @@
       }
     }
   }
+
+
+  // Uma composição de embalagens para cada aplicação; não é um kit nem especificação.
+  const productAssets = {
+    "SikaTop® Flex Fibras": "assets/produtos/sikatop-flex-fibras.webp",
+    "SikaTop®-100": "assets/produtos/sikatop-100.webp",
+    "Drykoelastic Pro": "assets/produtos/drykoelastic-pro.webp",
+    "Sika® Baldrame": "assets/produtos/sika-baldrame.webp",
+    "SikaShield®": "assets/produtos/sikashield.webp",
+    "SikaFill® Rápido Branco": "assets/produtos/sikafill-rapido-branco.webp",
+    "MC-Proof Multi": "assets/produtos/mc-proof-multi.webp",
+    "MC-Proof 900 EL": "assets/produtos/mc-proof-900-el.webp",
+    "Sika®-1": "assets/produtos/sika-1.webp",
+    "Hydro 1": "assets/produtos/mc-hydro-1.webp",
+    "Vedacit Aditivo": "assets/produtos/vedacit-aditivo.webp"
+  };
+  const productGroups = {
+    piscinas: ["SikaTop® Flex Fibras", "SikaTop®-100", "Drykoelastic Pro", "MC-Proof 900 EL"],
+    baldrames: ["Sika® Baldrame", "SikaTop®-100", "SikaShield®"],
+    lajes: ["SikaFill® Rápido Branco", "SikaShield®", "Drykoelastic Pro", "MC-Proof 900 EL"],
+    banheiros: ["SikaTop® Flex Fibras", "MC-Proof Multi", "Drykoelastic Pro"],
+    capilaridade: ["Sika®-1", "Hydro 1", "Vedacit Aditivo"],
+    fundacoes: ["Sika® Baldrame", "SikaShield®", "SikaTop®-100", "MC-Proof 900 EL"]
+  };
+  const cardsByName = new Map(productCards.map((card) => [
+    card.querySelector(".product-body h3")?.textContent.trim(), card
+  ]));
+  function loadPhoto(img, asset, originalURL) {
+    if (!asset) return;
+    img.addEventListener("error", () => {
+      if (img.dataset.photoFallback !== "used") {
+        img.dataset.photoFallback = "used";
+        img.src = originalURL;
+      } else {
+        img.closest(".solution-product-item, .product-image")?.classList.add("is-fallback");
+      }
+    });
+    img.src = asset;
+  }
+  for (const [name, card] of cardsByName) {
+    const img = card.querySelector(".product-image img");
+    if (img && productAssets[name]) loadPhoto(img, productAssets[name], img.src);
+  }
+  for (const panel of panels) {
+    const names = productGroups[panel.dataset.panel] || [];
+    const board = document.createElement("figure");
+    board.className = "solution-product-board";
+    const figcaption = document.createElement("figcaption");
+    figcaption.textContent = "Produtos relacionados a esta aplicação";
+    board.appendChild(figcaption);
+    const stage = document.createElement("div");
+    stage.className = "solution-product-stage";
+    for (const name of names) {
+      const card = cardsByName.get(name);
+      const source = card?.querySelector(".product-image img");
+      if (!source) continue;
+      const item = document.createElement("div");
+      item.className = "solution-product-item";
+      const photo = document.createElement("img");
+      photo.alt = "Embalagem de " + name;
+      photo.loading = "lazy";
+      photo.decoding = "async";
+      loadPhoto(photo, productAssets[name], source.dataset.photoFallback === "used" ? source.src : (source.dataset.originalSrc || source.src));
+      if (!productAssets[name]) photo.src = source.src;
+      const title = document.createElement("span");
+      title.textContent = name;
+      item.append(photo, title);
+      stage.appendChild(item);
+    }
+    board.appendChild(stage);
+    const foot = document.createElement("p");
+    foot.className = "solution-board-note";
+    foot.textContent = "Exemplos ilustrativos. Os itens não formam necessariamente um sistema único; a seleção exige análise e ficha técnica.";
+    board.appendChild(foot);
+    const content = panel.querySelector(".solution-content");
+    const position = content?.querySelector(".technical-note, .text-link");
+    if (position) content.insertBefore(board, position);
+    else content?.appendChild(board);
+  }
+
+  // Quando a imagem local da fachada não estiver publicada, mantenha o banner alternativo.
+  const companyPhoto = document.querySelector(".hero-company-photo");
+  companyPhoto?.addEventListener("error", () => { companyPhoto.hidden = true; }, { once: true });
+  if (companyPhoto?.complete && companyPhoto.naturalWidth === 0) companyPhoto.hidden = true;
 
   // Sem fotos quebradas e sem prometer um produto visualmente diferente.
   document.querySelectorAll(".product-image img").forEach((img) => {
