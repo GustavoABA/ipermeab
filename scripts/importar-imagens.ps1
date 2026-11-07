@@ -57,7 +57,7 @@ try {
 
   & git diff --cached --quiet -- assets/
   if ($LASTEXITCODE -eq 1) {
-    & git commit -m "assets: adicionar fotos reais e montagens da Impermeabilize"
+    & git commit -m "assets: adicionar fotos reais e montagens da Impermeabilize" -- assets/
     if ($LASTEXITCODE -ne 0) { throw "Falha ao criar commit das imagens." }
   } elseif ($LASTEXITCODE -ne 0) {
     throw "Falha ao verificar alterações no Git."
