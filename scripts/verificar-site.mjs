@@ -5,7 +5,7 @@ const html = readFileSync("index.html", "utf8");
 const js = readFileSync("app.js", "utf8");
 const css = readFileSync("styles.css", "utf8");
 
-const keys = ["piscinas", "baldrames", "lajes", "banheiros", "capilaridade", "fundacoes"];
+const keys = ["piscinas", "baldrames", "lajes", "banheiros", "aditivos"];
 const areas = ["inicio", "atendimento", "solucoes", "beneficios", "produtos", "sobre", "marcas", "duvidas", "contato"];
 const errors = [];
 let checks = 0;
@@ -23,7 +23,7 @@ for (const id of areas) verify("Área compartilhável " + id, html.includes('id=
 verify("Banners responsivos desktop e mobile", html.includes("assets/hero/impermeabilize-desktop.webp") && html.includes("assets/hero/impermeabilize-mobile.webp") && html.includes("<picture"));
 verify("Foto real da fachada preservada", existsSync("assets/empresa/fachada-impermeabilize.webp"));
 verify("Botões reais sobre as artes", (html.match(/class="hero-hotspot hero-hotspot-/g) || []).length === 2);
-for (const icon of ["piscinas.webp", "baldrames.webp", "lajes.webp", "fundacoes.webp", "banheiros.svg", "capilaridade.svg"]) {
+for (const icon of ["piscinas.webp", "baldrames.webp", "lajes.webp", "banheiros.svg", "aditivos.svg"]) {
   verify("Ícone na aba " + icon, html.includes("assets/icones/" + icon) && existsSync("assets/icones/" + icon));
 }
 verify("Modal de atendimento", html.includes('id="coming-soon-dialog"') && js.includes("showModal()"));
@@ -32,10 +32,23 @@ verify("Botão para copiar link", js.includes("navigator.clipboard.writeText"));
 verify("Responsividade", css.includes("@media(max-width:600px)"));
 verify("Sem mensagens técnicas no atendimento", !html.includes("WhatsApp ainda não cadastrado") && !js.includes("Configure os canais oficiais"));
 verify("Drykocril D-9 no catálogo", html.includes("<h3>Drykocril D-9</h3>"));
+verify("Alias de link de capilaridade", js.includes('key === "capilaridade" ? "aditivos" : key'));
+verify("Aba Fundações removida", !html.includes('id="tab-fundacoes"') && !html.includes('id="panel-fundacoes"'));
+verify("Cinco abas de soluções", (html.match(/role="tab" id="tab-/g) || []).length === 5);
+verify("Aditivos para concreto e Banheiros elevados", html.includes("Aditivos para concreto") && html.includes("Banheiros elevados"));
+verify("Nove famílias de produtos", (html.match(/class="product-family"/g) || []).length === 9);
+const familiesStart = html.indexOf('<div class="product-families"');
+const familiesEnd = html.indexOf('<div class="family-caution"', familiesStart);
+const familiesHTML = familiesStart >= 0 && familiesEnd > familiesStart ? html.slice(familiesStart, familiesEnd) : "";
+verify("Vinte e três produtos na lista", (familiesHTML.match(/<li>/g) || []).length === 23);
+verify("Foto da loja após banner", html.includes('class="hero-intro"') && html.includes('assets/empresa/fachada-impermeabilize.webp'));
+verify("Novas imagens de aplicação", css.includes("assets/aplicacoes/baldrames.webp") && css.includes("assets/aplicacoes/lajes.webp"));
+
 
 const requiredAssets = [
   "assets/empresa/fachada-impermeabilize.webp",
   ...keys.map((key) => "assets/montagens/" + key + ".webp"),
+  "assets/aplicacoes/baldrames.webp", "assets/aplicacoes/lajes.webp",
   ...[
     "sikatop-flex-fibras", "sikatop-100", "drykoelastic-pro",
     "sika-baldrame", "sikashield", "sikafill-rapido-branco",

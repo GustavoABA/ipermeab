@@ -384,3 +384,48 @@ h3{font-size:1.5rem}p{color:inherit}
 @media(prefers-reduced-motion:reduce){
  .hero-hotspot,.solution-tabs .solution-tab{transition:none}
 }
+
+/* Feedback de soluções e catálogo: estilos móveis como base */
+.hero-intro{background:#f6f9fc;border-bottom:1px solid #e3eaf0;padding:23px 0 33px}
+.hero-intro-grid{display:grid;grid-template-columns:1fr;gap:22px;align-items:center}
+.hero-intro-grid>img{width:100%;max-height:240px;aspect-ratio:16/9;object-fit:cover;object-position:center 46%;border-radius:15px;box-shadow:0 12px 35px rgba(4,31,58,.12)}
+.hero-intro h2{font-size:clamp(1.45rem,4vw,2.4rem);margin:9px 0 11px;color:#072541}
+.hero-intro p{font-size:.94rem;line-height:1.55;color:#455c70;max-width:65ch}
+.hero-intro-link{display:inline-flex;align-items:center;gap:8px;color:#07507b;font-weight:800;border-bottom:2px solid #ffcd28;padding-bottom:3px}
+.hero-intro-link:hover{color:#09324d}
+.hero-intro-grid .eyebrow{font-size:.66rem;letter-spacing:.11em}
+.foundation-visual{background-image:linear-gradient(0deg,rgba(1,24,43,.45),rgba(5,31,51,.07) 60%),url("assets/aplicacoes/baldrames.webp");background-position:center center}
+.slab-visual{background-image:linear-gradient(0deg,rgba(1,24,43,.47),rgba(5,31,51,.05) 60%),url("assets/aplicacoes/lajes.webp");background-position:28% center}
+.about-visual{background-image:linear-gradient(0deg,rgba(4,24,44,.68),transparent 65%),url("assets/empresa/fachada-impermeabilize.webp");background-position:center 50%}
+.solution-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.product-families-heading{margin:12px 0 18px}
+.product-families-heading h3{font-size:clamp(1.55rem,3.2vw,2.15rem);color:#072743;margin:2px 0 8px}
+.product-families-heading p{font-size:.9rem;color:#5b7185;max-width:70ch}
+.catalog-eyebrow{color:#0b6095!important;font-size:.72rem!important;letter-spacing:.10em;font-weight:800;margin-bottom:6px}
+.product-families{display:grid;grid-template-columns:1fr;gap:13px;margin-bottom:16px}
+.product-family{min-width:0;background:linear-gradient(165deg,#fff,#f9fbfe);border:1px solid #dbe5ed;border-radius:14px;padding:18px 17px 17px;box-shadow:0 4px 22px rgba(10,36,61,.045)}
+.product-family .family-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}
+.family-number{font-family:Manrope,sans-serif;font-size:.72rem;font-weight:800;background:#ffcd28;color:#092945;padding:6px 10px;border-radius:8px}
+.family-count{font-size:.71rem;color:#698199;font-weight:700}
+.product-family h4{font-size:1.08rem;color:#062a4d;margin:0 0 7px;letter-spacing:-.02em}
+.product-family>p{font-size:.8rem;line-height:1.55;color:#5a7082;margin:0 0 12px}
+.product-family ul{padding:0;margin:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.product-family li{color:#1f3e59;background:#edf4f9;border:1px solid #e1ebf2;border-radius:7px;padding:8px 10px;font-size:.82rem;font-weight:700;overflow-wrap:anywhere}
+.family-caution{font-size:.78rem;line-height:1.55;color:#4e6171;background:#fff7e2;border-left:3px solid #ffca30;padding:11px 15px;border-radius:0 7px 7px 0;margin:0 0 30px}
+.catalog-highlight-title{margin-top:30px;border-top:1px solid #e4edf3;padding-top:23px}
+.catalog-highlight-title h3{font-size:1.35rem;color:#062a49;margin:0 0 5px}
+.catalog-highlight-title p{color:#6c7f90;font-size:.86rem;margin:0 0 17px}
+@media(min-width:600px){
+ .product-families{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .hero-intro-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+ .hero-intro-grid>img{max-height:285px;aspect-ratio:5/4}
+}
+@media(min-width:900px){
+ .product-families{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .solution-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .hero-intro{padding:35px 0}
+ .hero-intro-grid{grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);gap:33px}
+}
+@media(min-width:1080px){.solution-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+
+.visual-label .image-disclosure{display:block;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:0;margin-top:6px;opacity:.96}

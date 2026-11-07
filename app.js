@@ -64,7 +64,8 @@
     let fragment;
     try { fragment = decodeURIComponent(window.location.hash.slice(1)); }
     catch { return null; }
-    return fragment.startsWith("solucao-") ? fragment.slice("solucao-".length) : null;
+    const key = fragment.startsWith("solucao-") ? fragment.slice("solucao-".length) : null;
+    return key === "capilaridade" ? "aditivos" : key;
   }
 
   tabs.forEach((tab, index) => {
@@ -237,8 +238,7 @@
     baldrames: ["Sika® Baldrame", "SikaTop®-100", "SikaShield®"],
     lajes: ["SikaFill® Rápido Branco", "SikaShield®", "Drykocril D-9", "Drykoelastic Pro"],
     banheiros: ["SikaTop® Flex Fibras", "MC-Proof Multi", "Drykocril D-9"],
-    capilaridade: ["Sika®-1", "Hydro 1", "Vedacit Aditivo"],
-    fundacoes: ["Sika® Baldrame", "SikaShield®", "SikaTop®-100", "MC-Proof 900 EL"]
+    aditivos: ["Sika®-1", "Hydro 1", "Vedacit Aditivo"]
   };
   const cardsByName = new Map(productCards.map((card) => [
     card.querySelector(".product-body h3")?.textContent.trim(), card

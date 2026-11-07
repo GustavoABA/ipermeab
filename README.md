@@ -9,7 +9,7 @@ Site institucional responsivo e catálogo de soluções em impermeabilização, 
 ## O que já foi implementado
 
 - Página inicial com hero, argumentos de valor e atendimento.
-- Seis painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros elevados, redutores de capilaridade e fundações, com composições de produtos em cada aba.
+- Cinco painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros elevados e aditivos para concreto, com composições de produtos em cada aba.
 - Catálogo ilustrativo com 12 produtos e filtros por marca (Sika, Vedacit, MC-Bauchemie e Dryko).
 - Informações institucionais, perguntas frequentes, seção de contato e rodapé.
 - Menu mobile, navegação por teclado nas abas, estados acessíveis, adaptação a telas pequenas e URLs compartilháveis para seções e soluções.
@@ -29,7 +29,7 @@ Os botões “Copiar link” geram o endereço completo da seção. Ao abrir uma
 
 O novo banner aceita a foto real da loja em Leme, SP, no caminho `assets/empresa/fachada-impermeabilize.webp`.
 
-As composições de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,capilaridade,fundacoes}.webp`. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
+As composições ativas de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,aditivos}.webp`. Os arquivos antigos de `capilaridade` e `fundacoes` foram mantidos para histórico e referências. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
 
 **As 19 imagens estão no repositório, na branch `ai-working`**: 1 fachada, 6 montagens e 12 embalagens. O layout pode usar as imagens locais sem depender de hospedagem externa para essas fotos.
 
@@ -92,3 +92,12 @@ Na versão inicial, as embalagens e fotografias são carregadas de **URLs extern
 - Confirmar os dados da empresa (telefones, e-mail, endereço, horários e redes).
 - Confirmar a lista exata de produtos comercializados e a disponibilidade.
 - Revisar textos finais com responsável técnico e publicar fotos autorizadas.
+
+## Feedback de 07/11/2026 — soluções e produtos
+
+- Introdução institucional com **foto original da fachada** em Leme (SP) logo após o banner responsivo.
+- Foto de **Baldrames** substituída por ilustração de vigas de fundação em obra; foto de **Lajes e coberturas** por ilustração de aplicação de manta asfáltica, em `assets/aplicacoes/`. São **imagens geradas ilustrativas, não fotografias de trabalhos da empresa**.
+- Textos de Piscinas, Baldrames, Lajes, Banheiros elevados e Aditivos para concreto revisados a partir das mensagens do cliente.
+- Quinta aba renomeada para **Aditivos para concreto**, usando `#solucao-aditivos` como endereço canônico e aceitando `#solucao-capilaridade` como link antigo. Sexta aba **Fundações removida**.
+- **9 famílias de produto, total de 23 nomes**: argamassa polimérica rígida, flexível, adesivos de chapisco, aditivos impermeabilizantes, plastificantes, cristalizantes, primers epóxi, primers de substratos absorventes e não absorventes. As 12 embalagens existentes permanecem no catálogo de destaque.
+- Produtos adicionais são **referências nominais sem imagens ou promessa de estoque/disponibilidade**. Informações de uso e sistema final dependem das fichas técnicas do fabricante e da orientação profissional.

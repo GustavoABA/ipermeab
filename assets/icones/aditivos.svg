@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" role="img" aria-label="Aditivos para concreto">
+<rect width="260" height="180" fill="#062340"/>
+<g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M43 116h174l-12 39H55z"/>
+<path d="M52 116l20-23h121l15 23"/>
+<path d="M87 100h72M66 137h127"/>
+<path d="M173 84l21-31 21 31c8 16-2 29-21 29s-28-13-21-29z" stroke="#ffcd28"/>
+<path d="M97 53l-9 39M111 60l22 32" stroke="#fff"/>
+<circle cx="194" cy="96" r="4" fill="#ffcd28" stroke="none"/>
+</g></svg>
