@@ -12,7 +12,8 @@ Site institucional responsivo e catálogo de soluções em impermeabilização, 
 - Seis painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros elevados, redutores de capilaridade e fundações, com composições de produtos em cada aba.
 - Catálogo ilustrativo com 12 produtos e filtros por marca (Sika, Vedacit, MC-Bauchemie e Dryko).
 - Informações institucionais, perguntas frequentes, seção de contato e rodapé.
-- Menu mobile, navegação por teclado nas abas, estados acessíveis, adaptação a telas pequenas e URLs compartilháveis para seções e soluções.\n- Botões de atendimento abrem temporariamente uma janela “Em breve”, sem exibir erros ou configurações internas.
+- Menu mobile, navegação por teclado nas abas, estados acessíveis, adaptação a telas pequenas e URLs compartilháveis para seções e soluções.
+- Botões de atendimento abrem temporariamente uma janela “Em breve”, sem exibir erros ou configurações internas.
 
 ## Como executar
 
@@ -31,6 +32,8 @@ O novo banner aceita a foto real da loja em Leme, SP, no caminho `assets/empresa
 As composições de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,capilaridade,fundacoes}.webp`. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
 
 **Esses arquivos binários devem ser enviados separadamente** para a branch, preservando as pastas. Até serem adicionados, o site tem imagens externas alternativas e pode não exibir o banner real ou as montagens finais.
+
+As imagens de lajes e banheiros incluem Drykocril D-9, tanto na montagem quanto nos cards móveis.
 
 As montagens são ilustrativas: os produtos não formam necessariamente um sistema único, nem substituem projeto e fichas técnicas.
 
