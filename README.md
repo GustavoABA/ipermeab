@@ -37,6 +37,25 @@ As imagens de lajes e banheiros incluem Drykocril D-9, tanto na montagem quanto 
 
 As montagens são ilustrativas: os produtos não formam necessariamente um sistema único, nem substituem projeto e fichas técnicas.
 
+## Importar as fotos pelo Windows
+
+As imagens prontas são entregues no arquivo **impermeabilize_fotos_e_montagens.zip**. O GitHub ainda não tem os binários na branch; o script do projeto os instala de uma vez, com os caminhos corretos.
+
+No clone local deste repositório, abra o PowerShell, vá para a branch de revisão e execute:
+
+```powershell
+git switch ai-working
+.\scripts\importar-imagens.ps1 -ZipPath "$env:USERPROFILE\Downloads\impermeabilize_fotos_e_montagens.zip" -Publicar
+```
+
+Se a execução de scripts estiver bloqueada na sessão, execute sem alterar a política do sistema:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\importar-imagens.ps1 -ZipPath "$env:USERPROFILE\Downloads\impermeabilize_fotos_e_montagens.zip" -Publicar
+```
+
+O script verifica os 19 arquivos de imagem, copia para `assets/`, cria um commit apenas dos assets e envia à branch `ai-working` se `-Publicar` foi informado. **Não faz merge com a `main`**. Requer Git instalado e permissão para enviar ao repositório. Se o ZIP estiver em outro diretório, altere o caminho.
+
 ## Atendimento temporário
 
 Por enquanto, todos os botões comerciais e técnicos abrem um modal **“Em breve”**, independentemente de haver número configurado. Não há envio de mensagem nem tentativa de abrir o WhatsApp. Os dados oficiais podem continuar cadastrados em `config.js` para futura ativação, mas não aparecem mensagens de diagnóstico para clientes.
