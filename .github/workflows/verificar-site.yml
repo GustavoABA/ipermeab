@@ -1,0 +1,20 @@
+name: Verificar site Impermeabilize
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [ai-working]
+permissions:
+  contents: read
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe JavaScript
+        run: node --check app.js
+      - name: Verificar áreas, produtos e imagens
+        run: node scripts/verificar-site.mjs
