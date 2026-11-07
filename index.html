@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#061c36">
-  <meta name="description" content="Impermeabilize: soluções técnicas em impermeabilização de piscinas, lajes, baldrames, banheiros e fundações. Produtos e orientação para proteger sua construção.">
+  <meta name="description" content="Impermeabilize em Leme, São Paulo. Soluções e produtos para impermeabilização de piscinas, baldrames, lajes, áreas internas, capilaridade e fundações.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Impermeabilize | Soluções em Impermeabilização">
   <meta property="og:description" content="Proteção e durabilidade para sua construção, do alicerce à cobertura.">
@@ -34,7 +34,7 @@
         <a href="#sobre">Sobre nós</a>
         <a href="#contato">Contato</a>
       </nav>
-      <a class="button button-yellow header-cta" href="#contato"><span aria-hidden="true">↗</span> Fale conosco</a>
+      <button class="button button-yellow header-cta" type="button" data-contact="sales"><span aria-hidden="true">↗</span> Fale conosco</button>
       <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="mobile-nav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -45,15 +45,15 @@
   </header>
   <main id="conteudo">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo" role="img" aria-label="Arquitetura contemporânea em concreto, representando uma construção protegida"></div>
+      <div class="hero-photo"><img class="hero-company-photo" src="assets/empresa/fachada-impermeabilize.webp" alt="Fachada da Impermeabilize em Leme, São Paulo" fetchpriority="high" decoding="async"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> SOLUÇÕES PARA SUA OBRA</span>
+          <span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> IMPERMEABILIZE · LEME – SP</span>
           <h1 id="hero-title">Seu patrimônio <em>protegido hoje</em> e sempre.</h1>
-          <p>Impermeabilização com os produtos certos, orientação especializada e soluções adequadas a cada etapa da construção.</p>
+          <p>Em Leme, interior de São Paulo, oferecemos produtos e orientação especializada para diferentes etapas de impermeabilização da sua obra.</p>
           <div class="hero-actions">
             <a class="button button-yellow" href="#solucoes">Conheça nossas soluções <span aria-hidden="true">→</span></a>
-            <a class="button button-outline" href="#contato">Solicitar orientação <span aria-hidden="true">↗</span></a>
+            <button type="button" data-contact="sales" class="button button-outline">Solicitar orientação <span aria-hidden="true">↗</span></button>
           </div>
           <div class="hero-trust">
             <span><span class="check-icon">✓</span> Proteção contra infiltrações</span>
@@ -67,7 +67,7 @@
       </div>
     </section>
 
-    <section class="contact-options section-padding-sm" aria-label="Canais de atendimento">
+    <section class="contact-options section-padding-sm" id="atendimento" aria-label="Canais de atendimento">
       <div class="container contact-options-grid">
         <div class="contact-tile sales-tile">
           <div class="tile-icon">✳</div>
@@ -84,7 +84,7 @@
       <div class="container">
         <div class="section-heading centered">
           <span class="eyebrow"><span class="eyebrow-line"></span> ONDE APLICAR</span>
-          <h2 id="solutions-title">Nossas <span>soluções</span></h2>
+          <h2 id="solutions-title">Nossas <span>soluções</span></h2><button class="section-copy-link" type="button" data-copy-link="solucoes">Copiar link da área</button>
           <p>Conheça os principais sistemas de impermeabilização e descubra as alternativas para cada etapa da sua obra.</p>
         </div>
         <div class="tabs-scroll">
@@ -92,12 +92,13 @@
             <button role="tab" id="tab-piscinas" aria-controls="panel-piscinas" aria-selected="true" tabindex="0" class="solution-tab is-active" data-solution="piscinas"><span class="tab-icon">≋</span> Piscinas</button>
             <button role="tab" id="tab-baldrames" aria-controls="panel-baldrames" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="baldrames"><span class="tab-icon">▰</span> Baldrames</button>
             <button role="tab" id="tab-lajes" aria-controls="panel-lajes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="lajes"><span class="tab-icon">⌂</span> Lajes e coberturas</button>
-            <button role="tab" id="tab-banheiros" aria-controls="panel-banheiros" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="banheiros"><span class="tab-icon">▦</span> Banheiros</button>
+            <button role="tab" id="tab-banheiros" aria-controls="panel-banheiros" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="banheiros"><span class="tab-icon">▦</span> Banheiros elevados</button>
             <button role="tab" id="tab-capilaridade" aria-controls="panel-capilaridade" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="capilaridade"><span class="tab-icon">↟</span> Capilaridade</button>
             <button role="tab" id="tab-fundacoes" aria-controls="panel-fundacoes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="fundacoes"><span class="tab-icon">▥</span> Fundações</button>
           </div>
         </div>
 
+        <p class="solution-help">Escolha uma área para ver a explicação e os produtos relacionados. <button type="button" class="section-copy-link" data-copy-link="current-solution">Copiar link desta solução</button></p>
         <div class="solution-panels">
           <article class="solution-panel" role="tabpanel" tabindex="0" id="panel-piscinas" aria-labelledby="tab-piscinas" data-panel="piscinas">
             <div class="solution-visual pool-visual">
@@ -114,7 +115,7 @@
                 <li><span class="list-number">03</span><div><strong>Cimento elástico</strong><small>Solução flexível conforme as recomendações do fabricante.</small></div></li>
               </ul>
               <p class="technical-note"><strong>Atenção:</strong> a escolha depende da estrutura, das movimentações, do revestimento e das condições da obra.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
 
@@ -130,7 +131,7 @@
                 <li><span class="list-number">02</span><div><strong>Manta asfáltica para baldrame</strong><small>Barreira impermeável entre elementos da fundação e alvenaria.</small></div></li>
               </ul>
               <p class="technical-note">A especificação deve observar umidade, detalhes construtivos e condições de aplicação.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
 
@@ -147,7 +148,7 @@
                 <li><span class="list-number">03</span><div><strong>Membranas elastoméricas</strong><small>Flexibilidade para pequenas movimentações, conforme o produto.</small></div></li>
               </ul>
               <p class="technical-note">Considere exposição, trânsito de pessoas, caimentos, drenagem e proteção mecânica.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
 
@@ -163,7 +164,7 @@
                 <li><span class="list-number">02</span><div><strong>Argamassa polimérica flexível</strong><small>Proteção e capacidade de acompanhar pequenas movimentações.</small></div></li>
               </ul>
               <p class="technical-note">Ralos, rodapés, cantos, tubulações e encontros exigem detalhamento adequado.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
 
@@ -180,7 +181,7 @@
                 <li><span class="list-number">03</span><div><strong>Vedacit</strong><small>Aditivo que reduz a passagem de água pelos poros do material.</small></div></li>
               </ul>
               <p class="technical-note"><strong>Importante:</strong> Sika®-1 e MC-Hydro 1 não devem ser especificados para concreto armado sem respaldo técnico; siga a ficha de cada produto.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
 
@@ -196,7 +197,7 @@
                 <li><span class="list-number">02</span><div><strong>Mantas asfálticas</strong><small>Membranas para barreira contínua nas áreas indicadas.</small></div></li>
               </ul>
               <p class="technical-note">O sistema deve ser definido considerando condições do solo, drenagem, pressão hidrostática e detalhes executivos.</p>
-              <a class="text-link" href="#contato">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></a>
+              <button type="button" data-contact="sales" class="text-link">Solicitar avaliação do sistema <span aria-hidden="true">↗</span></button>
             </div>
           </article>
         </div>
@@ -204,7 +205,7 @@
       </div>
     </section>
 
-    <section class="benefits section-padding-sm" aria-labelledby="benefits-title">
+    <section class="benefits section-padding-sm" id="beneficios" aria-labelledby="benefits-title">
       <div class="container benefits-grid">
         <div><span class="eyebrow eyebrow-light">POR QUE IMPERMEABILIZAR?</span><h2 id="benefits-title">A proteção de hoje é a <em>tranquilidade de amanhã.</em></h2></div>
         <div class="benefit-points">
@@ -218,8 +219,8 @@
     <section class="products section-padding" id="produtos" aria-labelledby="products-title">
       <div class="container">
         <div class="section-heading between">
-          <div><span class="eyebrow"><span class="eyebrow-line"></span> LINHAS DE PRODUTOS</span><h2 id="products-title">Produtos em <span>destaque</span></h2><p>Alguns produtos apresentados como referência para os sistemas descritos.</p></div>
-          <a class="button button-dark products-contact" href="#contato">Consultar um produto <span aria-hidden="true">↗</span></a>
+          <div><span class="eyebrow"><span class="eyebrow-line"></span> LINHAS DE PRODUTOS</span><h2 id="products-title">Produtos em <span>destaque</span></h2><button class="section-copy-link" type="button" data-copy-link="produtos">Copiar link da área</button><p>Alguns produtos apresentados como referência para os sistemas descritos.</p></div>
+          <button type="button" data-contact="sales" class="button button-dark products-contact">Consultar um produto <span aria-hidden="true">↗</span></button>
         </div>
         <div class="brand-filters" role="group" aria-label="Filtrar produtos por marca">
           <button class="brand-filter is-active" type="button" data-brand="all" aria-pressed="true">Todos</button>
@@ -229,18 +230,18 @@
           <button class="brand-filter" type="button" data-brand="Vedacit" aria-pressed="false">Vedacit</button>
         </div>
         <div class="product-grid" id="product-grid">
-          <article class="product-card" data-brand="Vedacit"><div class="product-image"><img loading="lazy" decoding="async" src="https://www.mercantilbeleski.com.br/media/tmp/webp/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/1207_-_vedacit_balde_18l_png.webp" alt="Balde Vedacit, aditivo impermeabilizante"></div><div class="product-body"><span class="product-brand">VEDACIT</span><h3>Vedacit Aditivo</h3><p>Redução da absorção capilar em argamassas e concretos.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://www.mc-bauchemie.com.br/assets/Brasil/Produtos/Fotos%20Embalagens/Hydro_1.jpg" alt="Balde de MC Hydro 1"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>Hydro 1</h3><p>Aditivo hidrofugante para argamassa e concreto não armado.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://cdn.awsli.com.br/2500x2500/2261/2261856/produto/222727179/chatgpt-image-17-de-set--de-2025--15_35_30-vnhevm7b02.png" alt="Balde de Sika 1, aditivo impermeabilizante"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>Sika®-1</h3><p>Aditivo impermeabilizante para argamassas.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://cesconstrucao.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/i/m/image_6812.jpg" alt="Balde MC-Proof Multi"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>MC-Proof Multi</h3><p>Impermeabilizante multiuso com reforço de fibras.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://lojaobramax.vtexassets.com/arquivos/ids/31895282/89632690_1.jpg?v=639076141778330000" alt="Embalagem MC-Proof 900 EL"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>MC-Proof 900 EL</h3><p>Membrana elastomérica impermeável com fibras.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Dryko"><div class="product-image"><img loading="lazy" decoding="async" src="https://dryko.com.br/wp-content/uploads/2024/04/DRYKOELASTIC-PRO-site-600x600px.png" alt="Balde Drykoelastic Pro"></div><div class="product-body"><span class="product-brand">DRYKO</span><h3>Drykoelastic Pro</h3><p>Membrana acrílica com cimento para diferentes aplicações.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://distribuidorasika.vtexassets.com/arquivos/ids/157502/Membrana-AsfAltica-Autoadesiva-Sika-Baldrame-0-30x10m-Sika-P14695.jpg?v=639064323991530000" alt="Rolo de manta Sika Baldrame"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>Sika® Baldrame</h3><p>Manta asfáltica autoadesiva para fundações e baldrames.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://carajas.vtexassets.com/arquivos/ids/26598393-800-800?aspect=true&amp;height=800&amp;v=638719067549800000&amp;width=800" alt="Balde SikaFill Rápido Branco"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaFill® Rápido Branco</h3><p>Manta líquida para sistemas de lajes e coberturas.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://down-br.img.susercontent.com/file/sg-11134201-7rcca-ltazkmyx75yp6a" alt="Caixa de SikaTop 100"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaTop®-100</h3><p>Revestimento impermeabilizante cimentício semirrígido.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://cesconstrucao.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/i/m/image_986.jpg" alt="Caixa de SikaTop Flex Fibras"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaTop® Flex Fibras</h3><p>Sistema cimentício flexível reforçado com fibras.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://apotiguar.fbitsstatic.net/img/p/manta-asfaltica-para-impermeabilizacao-p34-pe-tipo-ii-3mm-10-metros-sika-104970/290897-1.jpg?h=2000&amp;qs=ignore&amp;v=202504030929&amp;w=2000" alt="Rolo de manta asfáltica SikaShield"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaShield®</h3><p>Linha de mantas asfálticas para sistemas especificados.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
-          <article class="product-card" data-brand="Dryko"><div class="product-image"><img loading="lazy" decoding="async" src="https://cdn.awsli.com.br/600x700/1552/1552815/produto/371847352/13794-manta-liquida-cimenticia-4kg-drykoelastic-dryko-ertgl5c1d7.WEBP" alt="Balde Drykoelastic Cimento Elástico"></div><div class="product-body"><span class="product-brand">DRYKO</span><h3>Drykoelastic Cimento Elástico</h3><p>Manta líquida cimentícia para sistemas selecionados.</p><a href="#contato">Solicitar orientação <span aria-hidden="true">→</span></a></div></article>
+          <article class="product-card" data-brand="Vedacit"><div class="product-image"><img loading="lazy" decoding="async" src="https://www.mercantilbeleski.com.br/media/tmp/webp/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/1207_-_vedacit_balde_18l_png.webp" alt="Balde Vedacit, aditivo impermeabilizante"></div><div class="product-body"><span class="product-brand">VEDACIT</span><h3>Vedacit Aditivo</h3><p>Redução da absorção capilar em argamassas e concretos.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://www.mc-bauchemie.com.br/assets/Brasil/Produtos/Fotos%20Embalagens/Hydro_1.jpg" alt="Balde de MC Hydro 1"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>Hydro 1</h3><p>Aditivo hidrofugante para argamassa e concreto não armado.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://cdn.awsli.com.br/2500x2500/2261/2261856/produto/222727179/chatgpt-image-17-de-set--de-2025--15_35_30-vnhevm7b02.png" alt="Balde de Sika 1, aditivo impermeabilizante"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>Sika®-1</h3><p>Aditivo impermeabilizante para argamassas.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://cesconstrucao.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/i/m/image_6812.jpg" alt="Balde MC-Proof Multi"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>MC-Proof Multi</h3><p>Impermeabilizante multiuso com reforço de fibras.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="MC"><div class="product-image"><img loading="lazy" decoding="async" src="https://lojaobramax.vtexassets.com/arquivos/ids/31895282/89632690_1.jpg?v=639076141778330000" alt="Embalagem MC-Proof 900 EL"></div><div class="product-body"><span class="product-brand">MC-BAUCHEMIE</span><h3>MC-Proof 900 EL</h3><p>Membrana elastomérica impermeável com fibras.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Dryko"><div class="product-image"><img loading="lazy" decoding="async" src="https://dryko.com.br/wp-content/uploads/2024/04/DRYKOELASTIC-PRO-site-600x600px.png" alt="Balde Drykoelastic Pro"></div><div class="product-body"><span class="product-brand">DRYKO</span><h3>Drykoelastic Pro</h3><p>Membrana acrílica com cimento para diferentes aplicações.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://distribuidorasika.vtexassets.com/arquivos/ids/157502/Membrana-AsfAltica-Autoadesiva-Sika-Baldrame-0-30x10m-Sika-P14695.jpg?v=639064323991530000" alt="Rolo de manta Sika Baldrame"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>Sika® Baldrame</h3><p>Manta asfáltica autoadesiva para fundações e baldrames.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://carajas.vtexassets.com/arquivos/ids/26598393-800-800?aspect=true&amp;height=800&amp;v=638719067549800000&amp;width=800" alt="Balde SikaFill Rápido Branco"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaFill® Rápido Branco</h3><p>Manta líquida para sistemas de lajes e coberturas.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://down-br.img.susercontent.com/file/sg-11134201-7rcca-ltazkmyx75yp6a" alt="Caixa de SikaTop 100"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaTop®-100</h3><p>Revestimento impermeabilizante cimentício semirrígido.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://cesconstrucao.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/i/m/image_986.jpg" alt="Caixa de SikaTop Flex Fibras"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaTop® Flex Fibras</h3><p>Sistema cimentício flexível reforçado com fibras.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Sika"><div class="product-image"><img loading="lazy" decoding="async" src="https://apotiguar.fbitsstatic.net/img/p/manta-asfaltica-para-impermeabilizacao-p34-pe-tipo-ii-3mm-10-metros-sika-104970/290897-1.jpg?h=2000&amp;qs=ignore&amp;v=202504030929&amp;w=2000" alt="Rolo de manta asfáltica SikaShield"></div><div class="product-body"><span class="product-brand">SIKA</span><h3>SikaShield®</h3><p>Linha de mantas asfálticas para sistemas especificados.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
+          <article class="product-card" data-brand="Dryko"><div class="product-image"><img loading="lazy" decoding="async" src="https://cdn.awsli.com.br/600x700/1552/1552815/produto/371847352/13794-manta-liquida-cimenticia-4kg-drykoelastic-dryko-ertgl5c1d7.WEBP" alt="Balde Drykoelastic Cimento Elástico"></div><div class="product-body"><span class="product-brand">DRYKO</span><h3>Drykoelastic Cimento Elástico</h3><p>Manta líquida cimentícia para sistemas selecionados.</p><button type="button" class="product-contact" data-contact="sales">Solicitar orientação <span aria-hidden="true">→</span></button></div></article>
         </div>
         <p class="catalog-note">Imagens ilustrativas de embalagens. Disponibilidade e especificações devem ser confirmadas; consulte as fichas técnicas oficiais.</p>
       </div>
@@ -251,16 +252,16 @@
         <div class="about-visual"><div class="about-photo-label"><span>IMPERMEABILIZE</span><strong>Segurança que vem de uma boa escolha.</strong></div></div>
         <div class="about-copy">
           <span class="eyebrow"><span class="eyebrow-line"></span> QUEM SOMOS</span>
-          <h2 id="about-title">Sua obra merece <span>proteção de verdade.</span></h2>
+          <h2 id="about-title">Sua obra merece <span>proteção de verdade.</span></h2><p class="about-location">Nossa empresa está localizada em Leme, interior de São Paulo.</p><button class="section-copy-link" type="button" data-copy-link="sobre">Copiar link da área</button>
           <p>A Impermeabilize nasceu com o propósito de oferecer soluções completas e seguras em impermeabilização, com qualidade, confiança e atendimento especializado.</p>
           <p>Nosso foco é ajudar você a identificar a necessidade do seu projeto e escolher produtos e sistemas adequados para prevenir infiltrações e preservar seu patrimônio.</p>
           <div class="about-values"><div><strong>01</strong><span>Orientação técnica</span></div><div><strong>02</strong><span>Qualidade na escolha</span></div><div><strong>03</strong><span>Compromisso com sua obra</span></div></div>
-          <a href="#contato" class="button button-dark">Converse com a nossa equipe <span aria-hidden="true">↗</span></a>
+          <button type="button" data-contact="sales" class="button button-dark">Converse com a nossa equipe <span aria-hidden="true">↗</span></button>
         </div>
       </div>
     </section>
 
-    <section class="brands section-padding-sm" aria-labelledby="brands-title">
+    <section class="brands section-padding-sm" id="marcas" aria-labelledby="brands-title">
       <div class="container"><span class="eyebrow centered-text">REFERÊNCIAS DO CATÁLOGO</span><h2 id="brands-title">Marcas presentes em nossas soluções</h2>
         <div class="brand-logos" aria-label="Sika, Dryko, MC-Bauchemie e Vedacit">
           <span class="brand-sika">Sika</span><span class="brand-dryko">DRYKO</span><span class="brand-mc">MC <small>BAUCHEMIE</small></span><span class="brand-vedacit">VEDACIT</span>
@@ -268,7 +269,7 @@
       </div>
     </section>
 
-    <section class="faq section-padding" aria-labelledby="faq-title">
+    <section class="faq section-padding" id="duvidas" aria-labelledby="faq-title">
       <div class="container faq-grid">
         <div><span class="eyebrow"><span class="eyebrow-line"></span> DÚVIDAS FREQUENTES</span><h2 id="faq-title">Antes de começar a sua obra</h2><p>Entenda o que considerar antes de selecionar um sistema impermeabilizante.</p></div>
         <div class="faq-questions">
@@ -282,11 +283,11 @@
 
     <section class="final-cta" id="contato" aria-labelledby="contact-title">
       <div class="container final-cta-grid">
-        <div><span class="eyebrow eyebrow-light">VAMOS CONVERSAR?</span><h2 id="contact-title">A solução ideal para sua obra começa com uma conversa.</h2><p>Conte com a Impermeabilize para conhecer alternativas de produtos e sistemas adequados à sua necessidade.</p></div>
+        <div><span class="eyebrow eyebrow-light">VAMOS CONVERSAR?</span><h2 id="contact-title">A solução ideal para sua obra começa com uma conversa.</h2><button class="section-copy-link section-copy-link-light" type="button" data-copy-link="contato">Copiar link da área</button><p>Conte com a Impermeabilize para conhecer alternativas de produtos e sistemas adequados à sua necessidade.</p></div>
         <div class="final-cta-actions">
           <button class="button button-yellow" type="button" data-contact="sales">Falar com vendas <span aria-hidden="true">↗</span></button>
           <button class="button button-outline" type="button" data-contact="technical">Equipe técnica <span aria-hidden="true">↗</span></button>
-          <p id="contact-status" role="status" aria-live="polite">Canais de atendimento: configuração pendente.</p>
+          
         </div>
       </div>
     </section>
@@ -298,10 +299,16 @@
         <p>Proteção, segurança e durabilidade para sua construção.</p>
       </div>
       <div><h3>Explore</h3><a href="#solucoes">Soluções</a><a href="#produtos">Produtos</a><a href="#sobre">Sobre nós</a><a href="#contato">Contato</a></div>
-      <div><h3>Soluções</h3><a href="#solucoes" data-go-solution="piscinas">Piscinas</a><a href="#solucoes" data-go-solution="baldrames">Baldrames</a><a href="#solucoes" data-go-solution="lajes">Lajes e coberturas</a><a href="#solucoes" data-go-solution="banheiros">Banheiros</a></div>
-      <div><h3>Atendimento</h3><p id="footer-contact">Informações de contato em configuração.</p><div class="social-links" id="social-links" aria-label="Redes sociais"></div></div>
+      <div><h3>Soluções</h3><a href="#solucao-piscinas" data-go-solution="piscinas">Piscinas</a><a href="#solucao-baldrames" data-go-solution="baldrames">Baldrames</a><a href="#solucao-lajes" data-go-solution="lajes">Lajes e coberturas</a><a href="#solucao-banheiros" data-go-solution="banheiros">Banheiros</a></div>
+      <div><h3>Atendimento</h3><p id="footer-contact">Leme · São Paulo</p><div class="social-links" id="social-links" aria-label="Redes sociais"></div></div>
     </div>
     <div class="container footer-bottom"><span>© <span id="current-year">2026</span> Impermeabilize. Todos os direitos reservados.</span><span>As informações técnicas não substituem projeto ou ficha do fabricante.</span></div>
   </footer>
+  <dialog class="coming-soon-dialog" id="coming-soon-dialog" aria-labelledby="coming-soon-title" aria-describedby="coming-soon-description">
+    <div class="coming-soon-mark" aria-hidden="true">✦</div>
+    <h2 id="coming-soon-title">Em breve!</h2>
+    <p id="coming-soon-description">Nosso atendimento por aqui estará disponível em breve. Obrigado pelo interesse na Impermeabilize.</p>
+    <button class="button button-yellow" type="button" data-close-dialog>Entendi</button>
+  </dialog>
 </body>
 </html>
