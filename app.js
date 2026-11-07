@@ -179,9 +179,6 @@
   if (config.endereco) contactLines.push(config.endereco);
   if (config.horario) contactLines.push(config.horario);
   if (footerContact && contactLines.length) footerContact.textContent = contactLines.join(" • ");
-  if (status && (validPhone(salesNumber) || validPhone(techNumber))) {
-    status.textContent = "Escolha um canal acima para abrir o WhatsApp.";
-  }
   if (config.email && footerContact) {
     const mailLink = document.createElement("a");
     mailLink.href = "mailto:" + config.email;
@@ -253,7 +250,10 @@
   }
   for (const [name, card] of cardsByName) {
     const img = card.querySelector(".product-image img");
-    if (img && productAssets[name]) loadPhoto(img, productAssets[name], img.src);
+    if (img && productAssets[name]) {
+      img.dataset.originalSrc = img.src;
+      loadPhoto(img, productAssets[name], img.dataset.originalSrc);
+    }
   }
   for (const panel of panels) {
     const names = productGroups[panel.dataset.panel] || [];
@@ -274,7 +274,7 @@
       photo.alt = "Embalagem de " + name;
       photo.loading = "lazy";
       photo.decoding = "async";
-      loadPhoto(photo, productAssets[name], source.dataset.photoFallback === "used" ? source.src : (source.dataset.originalSrc || source.src));
+      loadPhoto(photo, productAssets[name], source.dataset.originalSrc || source.src);
       if (!productAssets[name]) photo.src = source.src;
       const title = document.createElement("span");
       title.textContent = name;
