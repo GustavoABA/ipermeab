@@ -322,3 +322,12 @@ h3{font-size:1.5rem}p{color:inherit}
   html{scroll-behavior:auto}
   .button,.solution-tab{transition:none}
 }
+
+/* A montagem substitui visualmente os cards em telas amplas; no celular, cards permanecem legíveis. */
+.solution-montage{display:none;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:10px;background:white}
+.solution-product-board.has-montage .solution-montage{display:block}
+.solution-product-board.has-montage .solution-product-stage{display:none}
+@media(max-width:600px){
+  .solution-product-board.has-montage .solution-montage{display:none}
+  .solution-product-board.has-montage .solution-product-stage{display:grid}
+}
