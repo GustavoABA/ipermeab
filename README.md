@@ -9,23 +9,34 @@ Site institucional responsivo e catálogo de soluções em impermeabilização, 
 ## O que já foi implementado
 
 - Página inicial com hero, argumentos de valor e atendimento.
-- Seis painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros, redutores de capilaridade e fundações.
+- Seis painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros elevados, redutores de capilaridade e fundações, com composições de produtos em cada aba.
 - Catálogo ilustrativo com 12 produtos e filtros por marca (Sika, Vedacit, MC-Bauchemie e Dryko).
 - Informações institucionais, perguntas frequentes, seção de contato e rodapé.
-- Menu mobile, navegação por teclado nas tabs, estados acessíveis e adaptação a telas pequenas.
+- Menu mobile, navegação por teclado nas abas, estados acessíveis, adaptação a telas pequenas e URLs compartilháveis para seções e soluções.\n- Botões de atendimento abrem temporariamente uma janela “Em breve”, sem exibir erros ou configurações internas.
 
 ## Como executar
 
 Basta abrir o arquivo `index.html` em um navegador. Para desenvolver com servidor local, use qualquer servidor estático de sua preferência.
 
-## Configuração dos contatos
+## Links por área
 
-Edite `config.js` para adicionar somente dados oficiais:
+O site é uma **única página**. A URL muda para o setor visível durante a rolagem, por exemplo `#sobre`, `#produtos` ou `#contato`. Clicar em uma aba de solução gera um link individual como `#solucao-piscinas`, `#solucao-baldrames` e `#solucao-capilaridade`.
 
-- `whatsappVendas` e `whatsappTecnico`: números brasileiros com código de país, somente dígitos (`55` seguido de DDD e telefone).
-- `email`, `phoneDisplay`, `endereco`, `horario`, `instagramUrl` e `facebookUrl`.
+Os botões “Copiar link” geram o endereço completo da seção. Ao abrir uma URL de solução, a aba correspondente é selecionada automaticamente.
 
-Enquanto não houver número válido configurado, os botões de WhatsApp **não simulam um atendimento**; mostram uma mensagem de configuração pendente.
+## Imagens fornecidas
+
+O novo banner aceita a foto real da loja em Leme, SP, no caminho `assets/empresa/fachada-impermeabilize.webp`.
+
+As composições de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,capilaridade,fundacoes}.webp`. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
+
+**Esses arquivos binários devem ser enviados separadamente** para a branch, preservando as pastas. Até serem adicionados, o site tem imagens externas alternativas e pode não exibir o banner real ou as montagens finais.
+
+As montagens são ilustrativas: os produtos não formam necessariamente um sistema único, nem substituem projeto e fichas técnicas.
+
+## Atendimento temporário
+
+Por enquanto, todos os botões comerciais e técnicos abrem um modal **“Em breve”**, independentemente de haver número configurado. Não há envio de mensagem nem tentativa de abrir o WhatsApp. Os dados oficiais podem continuar cadastrados em `config.js` para futura ativação, mas não aparecem mensagens de diagnóstico para clientes.
 
 ## Publicar pelo GitHub Pages
 
