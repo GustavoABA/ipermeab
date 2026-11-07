@@ -20,7 +20,12 @@ for (const key of keys) {
   verify("Relação de produtos " + key, new RegExp("\\b" + key + ": \\[", "u").test(js));
 }
 for (const id of areas) verify("Área compartilhável " + id, html.includes('id="' + id + '"'));
-verify("Banner com a fachada de Leme", html.includes("assets/empresa/fachada-impermeabilize.webp"));
+verify("Banners responsivos desktop e mobile", html.includes("assets/hero/impermeabilize-desktop.webp") && html.includes("assets/hero/impermeabilize-mobile.webp") && html.includes("<picture"));
+verify("Foto real da fachada preservada", existsSync("assets/empresa/fachada-impermeabilize.webp"));
+verify("Botões reais sobre as artes", (html.match(/class="hero-hotspot hero-hotspot-/g) || []).length === 2);
+for (const icon of ["piscinas.webp", "baldrames.webp", "lajes.webp", "fundacoes.webp", "banheiros.svg", "capilaridade.svg"]) {
+  verify("Ícone na aba " + icon, html.includes("assets/icones/" + icon) && existsSync("assets/icones/" + icon));
+}
 verify("Modal de atendimento", html.includes('id="coming-soon-dialog"') && js.includes("showModal()"));
 verify("Links individuais por solução", js.includes('"#solucao-" + key') && js.includes("syncSolutionFromAddress"));
 verify("Botão para copiar link", js.includes("navigator.clipboard.writeText"));
