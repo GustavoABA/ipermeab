@@ -60,7 +60,10 @@
   }
 
   function solutionFromHash() {
-    const fragment = decodeURIComponent(window.location.hash.slice(1));
+    // Links malformados não devem impedir o restante do site de funcionar.
+    let fragment;
+    try { fragment = decodeURIComponent(window.location.hash.slice(1)); }
+    catch { return null; }
     return fragment.startsWith("solucao-") ? fragment.slice("solucao-".length) : null;
   }
 
@@ -92,12 +95,15 @@
     const key = solutionFromHash();
     if (solutionKeys.has(key)) activateSolution(key, { scroll });
   }
+  const initialSolution = solutionFromHash();
   syncSolutionFromAddress();
+  // O ID da aba é virtual (#solucao-...), então o navegador não o rola sozinho.
+  // Posicionar a seção assim que o DOM estiver pronto evita depender de fotos externas.
+  if (solutionKeys.has(initialSolution)) {
+    window.requestAnimationFrame(() => solutionSection?.scrollIntoView({ behavior: "auto", block: "start" }));
+  }
   window.addEventListener("hashchange", () => syncSolutionFromAddress(true));
   window.addEventListener("popstate", () => syncSolutionFromAddress(true));
-  window.addEventListener("load", () => {
-    if (solutionKeys.has(solutionFromHash())) syncSolutionFromAddress(true);
-  });
 
   // A URL acompanha a área visível, sem recarregar a página e sem inflar o histórico.
   const sectionIDs = ["inicio", "atendimento", "solucoes", "beneficios", "produtos", "sobre", "marcas", "duvidas", "contato"];
@@ -223,13 +229,14 @@
     "MC-Proof 900 EL": "assets/produtos/mc-proof-900-el.webp",
     "Sika®-1": "assets/produtos/sika-1.webp",
     "Hydro 1": "assets/produtos/mc-hydro-1.webp",
-    "Vedacit Aditivo": "assets/produtos/vedacit-aditivo.webp"
+    "Vedacit Aditivo": "assets/produtos/vedacit-aditivo.webp",
+    "Drykocril D-9": "assets/produtos/drykocril-d9.webp"
   };
   const productGroups = {
     piscinas: ["SikaTop® Flex Fibras", "SikaTop®-100", "Drykoelastic Pro", "MC-Proof 900 EL"],
     baldrames: ["Sika® Baldrame", "SikaTop®-100", "SikaShield®"],
-    lajes: ["SikaFill® Rápido Branco", "SikaShield®", "Drykoelastic Pro", "MC-Proof 900 EL"],
-    banheiros: ["SikaTop® Flex Fibras", "MC-Proof Multi", "Drykoelastic Pro"],
+    lajes: ["SikaFill® Rápido Branco", "SikaShield®", "Drykocril D-9", "Drykoelastic Pro"],
+    banheiros: ["SikaTop® Flex Fibras", "MC-Proof Multi", "Drykocril D-9"],
     capilaridade: ["Sika®-1", "Hydro 1", "Vedacit Aditivo"],
     fundacoes: ["Sika® Baldrame", "SikaShield®", "SikaTop®-100", "MC-Proof 900 EL"]
   };
