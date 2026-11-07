@@ -31,7 +31,7 @@ O novo banner aceita a foto real da loja em Leme, SP, no caminho `assets/empresa
 
 As composições de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,capilaridade,fundacoes}.webp`. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
 
-**Esses arquivos binários devem ser enviados separadamente** para a branch, preservando as pastas. Até serem adicionados, o site tem imagens externas alternativas e pode não exibir o banner real ou as montagens finais.
+**As 19 imagens estão no repositório, na branch `ai-working`**: 1 fachada, 6 montagens e 12 embalagens. O layout pode usar as imagens locais sem depender de hospedagem externa para essas fotos.
 
 As imagens de lajes e banheiros incluem Drykocril D-9, tanto na montagem quanto nos cards móveis.
 
@@ -39,7 +39,7 @@ As montagens são ilustrativas: os produtos não formam necessariamente um siste
 
 ## Importar as fotos pelo Windows
 
-As imagens prontas são entregues no arquivo **impermeabilize_fotos_e_montagens.zip**. O GitHub ainda não tem os binários na branch; o script do projeto os instala de uma vez, com os caminhos corretos.
+As imagens prontas também são entregues no arquivo **impermeabilize_fotos_e_montagens.zip**. **A importação já foi feita na branch `ai-working`**; o script abaixo é opcional, útil somente se for necessário restaurar ou substituir os arquivos posteriormente.
 
 No clone local deste repositório, abra o PowerShell, vá para a branch de revisão e execute:
 
@@ -71,6 +71,12 @@ Consulte `REFERENCIAS_TECNICAS.md`. Os textos do site são orientativos e **não
 ## Imagens e produção
 
 Na versão inicial, as embalagens e fotografias são carregadas de **URLs externas**, como referências visuais. Esse conteúdo pode mudar ou ficar indisponível. Antes de usar comercialmente em produção, confirme direitos de uso e disponibilidade, substitua por imagens autorizadas hospedadas em `assets/` e ajuste os endereços em `index.html` e `styles.css`.
+
+## Validação
+
+- Os 19 arquivos locais estão na branch `ai-working` (commit `4268f2f`).
+- O workflow automatizado verificou sintaxe JavaScript, seções, abas, modal e presença dos assets; execução aprovada no GitHub Actions.
+- Ainda é recomendável revisão visual em celular e desktop e conferência técnica das aplicações antes de publicar.
 
 ## Pendências comerciais
 
