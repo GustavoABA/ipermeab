@@ -331,3 +331,56 @@ h3{font-size:1.5rem}p{color:inherit}
   .solution-product-board.has-montage .solution-montage{display:none}
   .solution-product-board.has-montage .solution-product-stage{display:grid}
 }
+
+
+/* REDESIGN 2026 — hero responsivo real e navegação mobile-first.
+   As frases e os botões já fazem parte das artes; hotspots transparentes
+   implementam cliques de verdade e recebem foco pelo teclado. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.hero.hero-artwork{display:block;min-height:0;background:#031d39;overflow:hidden;isolation:isolate}
+.hero.hero-artwork::after{display:none}
+.hero-canvas{position:relative;width:min(100%,1720px);margin:0 auto;line-height:0}
+.hero-banner,.hero-banner img{display:block;width:100%;height:auto}
+.hero-banner img{max-width:none;aspect-ratio:1122/1402;object-fit:contain}
+.hero-hotspot{position:absolute;z-index:5;display:block;margin:0;padding:0;border:0;background:transparent;border-radius:17px;cursor:pointer;touch-action:manipulation;transition:background-color .15s}
+.hero-hotspot:hover{background:rgba(255,255,255,.10)}
+.hero-hotspot:focus-visible{outline:3px solid #fff;outline-offset:4px;background:rgba(255,205,40,.12)}
+/* Posição em porcentagem da arte vertical aprovada — preservar proporção. */
+.hero-hotspot-sales{left:16.0%;width:66.8%;top:76.0%;height:8.6%}
+.hero-hotspot-technical{left:16.0%;width:66.8%;top:86.0%;height:8.6%}
+/* Os cards não cobrem os botões contidos no banner. */
+.contact-options{padding-top:18px;padding-bottom:18px}
+.contact-options-grid{transform:none;margin-bottom:0;grid-template-columns:1fr}
+/* Abas em duas colunas no celular, sem rolagem horizontal obrigatória. */
+.tabs-scroll{overflow:visible;padding-bottom:0}
+.solution-tabs{min-width:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.solution-tabs .solution-tab{border:2px solid transparent;min-height:138px;padding:0;gap:0;overflow:hidden;border-radius:14px;box-shadow:0 5px 18px rgba(0,28,54,.10);background:#062340;color:#fff;display:flex;flex-direction:column;justify-content:space-between;transform:none}
+.solution-tabs .solution-tab:hover{border-color:#ffcf28;background:#062340;transform:translateY(-2px)}
+.solution-tabs .solution-tab.is-active{background:#062340;color:#fff;border-color:#ffc629;box-shadow:0 0 0 2px rgba(255,205,40,.23),0 8px 22px rgba(0,29,55,.17)}
+.solution-tabs .solution-tab .tab-icon{display:flex;align-items:center;justify-content:center;flex:1;width:100%;padding:6px;min-height:92px;background:#062340;font-size:0;line-height:0}
+.solution-tabs .tab-icon img{display:block;width:100%;max-width:142px;height:90px;object-fit:contain}
+.solution-tabs .solution-tab .tab-label{display:flex;align-items:center;justify-content:center;width:100%;background:#ffcf28;color:#061d35;padding:9px 7px;min-height:46px;font-weight:800;font-size:.82rem;line-height:1.18;text-align:center}
+.solution-tabs .solution-tab.is-active .tab-label{background:#ffcd28}
+.tile-icon svg{display:block;width:39px;height:39px}
+@media(min-width:600px){
+ .solution-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .contact-options-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:768px){
+ .hero-banner img{aspect-ratio:1672/941}
+ .hero-hotspot-sales{left:5.0%;width:20.6%;top:58.0%;height:9.5%}
+ .hero-hotspot-technical{left:26.3%;width:19.7%;top:58.0%;height:9.5%}
+}
+@media(min-width:1080px){
+ .solution-tabs{grid-template-columns:repeat(6,minmax(0,1fr))}
+ .solution-tabs .solution-tab{min-height:146px}
+ .solution-tabs .tab-icon img{height:97px}
+}
+@media(max-width:380px){
+ .solution-tabs{gap:8px}
+ .solution-tabs .solution-tab .tab-label{font-size:.73rem}
+ .solution-tabs .tab-icon img{height:78px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-hotspot,.solution-tabs .solution-tab{transition:none}
+}

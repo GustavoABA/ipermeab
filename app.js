@@ -309,11 +309,6 @@
     else content?.appendChild(board);
   }
 
-  // Quando a imagem local da fachada não estiver publicada, mantenha o banner alternativo.
-  const companyPhoto = document.querySelector(".hero-company-photo");
-  companyPhoto?.addEventListener("error", () => { companyPhoto.hidden = true; }, { once: true });
-  if (companyPhoto?.complete && companyPhoto.naturalWidth === 0) companyPhoto.hidden = true;
-
   // Sem fotos quebradas e sem prometer um produto visualmente diferente.
   document.querySelectorAll(".product-image img").forEach((img) => {
     const fallback = () => img.parentElement?.classList.add("is-fallback");

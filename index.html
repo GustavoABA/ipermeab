@@ -44,37 +44,31 @@
     </nav>
   </header>
   <main id="conteudo">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo"><img class="hero-company-photo" src="assets/empresa/fachada-impermeabilize.webp" alt="Fachada da Impermeabilize em Leme, São Paulo" fetchpriority="high" decoding="async"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> IMPERMEABILIZE · LEME – SP</span>
-          <h1 id="hero-title">Seu patrimônio <em>protegido hoje</em> e sempre.</h1>
-          <p>Em Leme, interior de São Paulo, oferecemos produtos e orientação especializada para diferentes etapas de impermeabilização da sua obra.</p>
-          <div class="hero-actions">
-            <a class="button button-yellow" href="#solucoes">Conheça nossas soluções <span aria-hidden="true">→</span></a>
-            <button type="button" data-contact="sales" class="button button-outline">Solicitar orientação <span aria-hidden="true">↗</span></button>
-          </div>
-          <div class="hero-trust">
-            <span><span class="check-icon">✓</span> Proteção contra infiltrações</span>
-            <span><span class="check-icon">✓</span> Soluções para obra e reforma</span>
-          </div>
-        </div>
-        <div class="hero-float" aria-hidden="true">
-          <span class="hero-float-icon">◈</span>
-          <div><strong>Do alicerce à cobertura</strong><small>Uma solução para cada necessidade.</small></div>
-        </div>
+    <section class="hero hero-artwork" aria-labelledby="hero-title">
+      <div class="hero-canvas">
+        <picture class="hero-banner">
+          <source media="(min-width: 768px)" srcset="assets/hero/impermeabilize-desktop.webp" width="1672" height="941">
+          <img src="assets/hero/impermeabilize-mobile.webp" width="1122" height="1402"
+            alt="Impermeabilize: soluções em impermeabilização, proteção e durabilidade para sua obra em Leme, São Paulo. Foto da fachada da empresa e canais de vendas e equipe técnica."
+            fetchpriority="high" decoding="async">
+        </picture>
+        <h1 id="hero-title" class="sr-only">Impermeabilize: proteção e durabilidade para sua obra em Leme, São Paulo</h1>
+        <p class="sr-only">Soluções em impermeabilização com atendimento especializado. Seu patrimônio protegido com a solução certa.</p>
+        <button type="button" class="hero-hotspot hero-hotspot-sales" data-contact="sales"
+          aria-label="Fale com Vendas — atendimento em breve"></button>
+        <button type="button" class="hero-hotspot hero-hotspot-technical" data-contact="technical"
+          aria-label="Equipe Técnica — atendimento em breve"></button>
       </div>
     </section>
 
     <section class="contact-options section-padding-sm" id="atendimento" aria-label="Canais de atendimento">
       <div class="container contact-options-grid">
         <div class="contact-tile sales-tile">
-          <div class="tile-icon">✳</div>
+          <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13h40v30H28L14 53V43h-2z"/><path d="M23 28h18M23 35h12" stroke="#ffcd28"/></svg></div>
           <div class="tile-body"><span>ATENDIMENTO COMERCIAL</span><h2>Fale com <strong>vendas</strong></h2><p>Tire dúvidas sobre produtos e encontre opções para o seu projeto.</p><button class="button button-yellow" data-contact="sales">Conversar com vendas <span aria-hidden="true">→</span></button></div>
         </div>
         <div class="contact-tile technical-tile">
-          <div class="tile-icon">⌁</div>
+          <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 43h46M15 43V35c0-12 9-21 21-21s21 9 21 21v8M36 14v21M18 47h36l-5 9H23z"/><path d="M19 26l8-4M53 26l-8-4" stroke="#ffcd28"/></svg></div>
           <div class="tile-body"><span>ATENDIMENTO ESPECIALIZADO</span><h2>Fale com a <strong>equipe técnica</strong></h2><p>Entenda os sistemas de impermeabilização adequados à sua obra.</p><button class="button button-yellow" data-contact="technical">Solicitar orientação <span aria-hidden="true">→</span></button></div>
         </div>
       </div>
@@ -89,12 +83,12 @@
         </div>
         <div class="tabs-scroll">
           <div class="solution-tabs" role="tablist" aria-label="Tipos de impermeabilização">
-            <button role="tab" id="tab-piscinas" aria-controls="panel-piscinas" aria-selected="true" tabindex="0" class="solution-tab is-active" data-solution="piscinas"><span class="tab-icon">≋</span> Piscinas</button>
-            <button role="tab" id="tab-baldrames" aria-controls="panel-baldrames" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="baldrames"><span class="tab-icon">▰</span> Baldrames</button>
-            <button role="tab" id="tab-lajes" aria-controls="panel-lajes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="lajes"><span class="tab-icon">⌂</span> Lajes e coberturas</button>
-            <button role="tab" id="tab-banheiros" aria-controls="panel-banheiros" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="banheiros"><span class="tab-icon">▦</span> Banheiros elevados</button>
-            <button role="tab" id="tab-capilaridade" aria-controls="panel-capilaridade" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="capilaridade"><span class="tab-icon">↟</span> Capilaridade</button>
-            <button role="tab" id="tab-fundacoes" aria-controls="panel-fundacoes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="fundacoes"><span class="tab-icon">▥</span> Fundações</button>
+            <button role="tab" id="tab-piscinas" aria-controls="panel-piscinas" aria-selected="true" tabindex="0" class="solution-tab is-active" data-solution="piscinas"><span class="tab-icon"><img src="assets/icones/piscinas.webp" alt="" loading="lazy" decoding="async" width="300" height="210"></span><span class="tab-label">Piscinas</span></button>
+            <button role="tab" id="tab-baldrames" aria-controls="panel-baldrames" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="baldrames"><span class="tab-icon"><img src="assets/icones/baldrames.webp" alt="" loading="lazy" decoding="async" width="300" height="210"></span><span class="tab-label">Baldrames</span></button>
+            <button role="tab" id="tab-lajes" aria-controls="panel-lajes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="lajes"><span class="tab-icon"><img src="assets/icones/lajes.webp" alt="" loading="lazy" decoding="async" width="300" height="210"></span><span class="tab-label">Lajes e coberturas</span></button>
+            <button role="tab" id="tab-banheiros" aria-controls="panel-banheiros" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="banheiros"><span class="tab-icon"><img src="assets/icones/banheiros.svg" alt="" loading="lazy" decoding="async" width="260" height="180"></span><span class="tab-label">Banheiros elevados</span></button>
+            <button role="tab" id="tab-capilaridade" aria-controls="panel-capilaridade" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="capilaridade"><span class="tab-icon"><img src="assets/icones/capilaridade.svg" alt="" loading="lazy" decoding="async" width="260" height="180"></span><span class="tab-label">Capilaridade</span></button>
+            <button role="tab" id="tab-fundacoes" aria-controls="panel-fundacoes" aria-selected="false" tabindex="-1" class="solution-tab" data-solution="fundacoes"><span class="tab-icon"><img src="assets/icones/fundacoes.webp" alt="" loading="lazy" decoding="async" width="300" height="210"></span><span class="tab-label">Fundações</span></button>
           </div>
         </div>
 

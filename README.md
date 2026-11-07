@@ -60,6 +60,15 @@ O script verifica os 19 arquivos de imagem, copia para `assets/`, cria um commit
 
 Por enquanto, todos os botões comerciais e técnicos abrem um modal **“Em breve”**, independentemente de haver número configurado. Não há envio de mensagem nem tentativa de abrir o WhatsApp. Os dados oficiais podem continuar cadastrados em `config.js` para futura ativação, mas não aparecem mensagens de diagnóstico para clientes.
 
+## Redesign dos banners e ícones (07/11/2026)
+
+- **Mobile first:** a primeira arte carregada é `assets/hero/impermeabilize-mobile.webp` (vertical, 1122×1402), e a partir de 768px o navegador usa `assets/hero/impermeabilize-desktop.webp` (horizontal, 1672×941) com `<picture>` e `<source>`.
+- Os textos e desenhos de botões já estão impressos nas duas artes aprovadas. Para não criar botões falsos, áreas posicionadas sobre os CTAs são botões HTML reais, acionam o mesmo modal **Em breve** e são acessíveis por teclado. Não adicione CTAs HTML visíveis em cima da arte.
+- A navegação por soluções passa a usar cartões adaptativos de **2 colunas (celular), 3 colunas (tablet) e 6 colunas (desktop)**. As imagens foram extraídas do painel visual aprovado em `assets/design/guia-icones.webp`, com cada ícone em seu próprio arquivo de `assets/icones/`.
+- Quatro ícones acompanham diretamente a arte gerada: piscinas, baldrames, lajes e fundações. Para manter **Banheiros elevados** e **Capilaridade** sem induzir o visitante a erro, foram criados dois desenhos SVG de traço equivalente. Os ícones originais de caixas d'água e reformas estão conservados na pasta para uso futuro, mas não substituem abas que hoje apresentam outras soluções.
+- As imagens geradas são **artes publicitárias**, não fotografias documentais; a foto verdadeira da fachada permanece em `assets/empresa/`.
+- Para conferir a responsividade, testar também em 320px, 375px, 768px, 1280px e telas ultrawide. Ao abrir os botões das artes, o modal **Em breve** deve funcionar, e as abas devem manter links individuais.
+
 ## Publicar pelo GitHub Pages
 
 No repositório do GitHub, abra **Settings → Pages**, escolha **Deploy from a branch**, selecione **main** e a pasta **/(root)**. Salve e aguarde o GitHub informar o endereço público. A publicação não foi ativada automaticamente por este projeto.
