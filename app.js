@@ -281,7 +281,17 @@
       item.append(photo, title);
       stage.appendChild(item);
     }
-    board.appendChild(stage);
+    // Em produção, uma montagem única utiliza as fotos originais fornecidas;
+    // caso o arquivo não esteja disponível, o conjunto responsivo segue funcional.
+    const montage = document.createElement("img");
+    montage.className = "solution-montage";
+    montage.alt = "Composição visual de embalagens relacionadas à solução " + (panel.querySelector("h3")?.textContent || panel.dataset.panel);
+    montage.loading = "lazy";
+    montage.decoding = "async";
+    montage.addEventListener("load", () => board.classList.add("has-montage"), { once: true });
+    montage.addEventListener("error", () => montage.remove(), { once: true });
+    montage.src = "assets/montagens/" + panel.dataset.panel + ".webp";
+    board.append(montage, stage);
     const foot = document.createElement("p");
     foot.className = "solution-board-note";
     foot.textContent = "Exemplos ilustrativos. Os itens não formam necessariamente um sistema único; a seleção exige análise e ficha técnica.";
