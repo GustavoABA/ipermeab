@@ -429,3 +429,23 @@ h3{font-size:1.5rem}p{color:inherit}
 @media(min-width:1080px){.solution-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}}
 
 .visual-label .image-disclosure{display:block;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:0;margin-top:6px;opacity:.96}
+
+
+/* Atendimento real sobre a arte (substitui o rótulo de vendas impresso no banner).
+   Imagem continua responsiva; este botão conserva interatividade e acesso pelo teclado. */
+.hero-hotspot-sales{
+  display:flex;align-items:center;justify-content:center;gap:clamp(6px,1.3vw,17px);
+  padding:0 6px;background:#ffcd28;color:#061d35;font-family:Manrope,"DM Sans",sans-serif;
+  font-size:clamp(.94rem,2vw,1.65rem);font-weight:800;line-height:1.1;border-radius:999px;
+  box-shadow:inset 0 0 0 1px rgba(255,210,20,.3);white-space:nowrap;
+}
+.hero-hotspot-sales:hover{background:#ffe16d}
+.hero-hotspot-sales svg{width:clamp(20px,2.5vw,34px);height:clamp(20px,2.5vw,34px);flex:none}
+.product-lines{background:#f5f8fb}
+.product-lines .section-heading{max-width:740px;margin-left:auto;margin-right:auto}
+.product-lines .section-heading h2 span{color:#e9b900}
+.product-lines .product-families{margin-top:24px}
+.products .section-heading{margin-bottom:24px}
+@media(min-width:768px){
+  .hero-hotspot-sales{border-radius:16px}
+}

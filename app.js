@@ -107,7 +107,7 @@
   window.addEventListener("popstate", () => syncSolutionFromAddress(true));
 
   // A URL acompanha a área visível, sem recarregar a página e sem inflar o histórico.
-  const sectionIDs = ["inicio", "atendimento", "solucoes", "beneficios", "produtos", "sobre", "marcas", "duvidas", "contato"];
+  const sectionIDs = ["inicio", "atendimento", "solucoes", "sobre", "produtos", "linhas-produtos", "beneficios", "marcas", "duvidas", "contato"];
   const sections = sectionIDs.map((id) => document.getElementById(id)).filter(Boolean);
   let sectionFrame = 0;
   function syncVisibleSection() {
