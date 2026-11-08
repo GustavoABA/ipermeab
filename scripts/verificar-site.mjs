@@ -6,7 +6,7 @@ const js = readFileSync("app.js", "utf8");
 const css = readFileSync("styles.css", "utf8");
 
 const keys = ["piscinas", "baldrames", "lajes", "banheiros", "aditivos"];
-const areas = ["inicio", "atendimento", "solucoes", "beneficios", "produtos", "sobre", "marcas", "duvidas", "contato"];
+const areas = ["inicio", "atendimento", "solucoes", "sobre", "produtos", "linhas-produtos", "beneficios", "marcas", "duvidas", "contato"];
 const errors = [];
 let checks = 0;
 function verify(name, test) {
@@ -41,6 +41,16 @@ const familiesStart = html.indexOf('<div class="product-families"');
 const familiesEnd = html.indexOf('<div class="family-caution"', familiesStart);
 const familiesHTML = familiesStart >= 0 && familiesEnd > familiesStart ? html.slice(familiesStart, familiesEnd) : "";
 verify("Vinte e três produtos na lista", (familiesHTML.match(/<li>/g) || []).length === 23);
+const sectionsInOrder = ["solucoes", "sobre", "produtos", "linhas-produtos", "beneficios", "marcas"];
+const sectionPositions = sectionsInOrder.map((id) => html.indexOf('id="' + id + '"'));
+verify("Ordem de seção: soluções, quem somos, catálogo, linhas", sectionPositions.every((pos, i) => pos >= 0 && (i === 0 || pos > sectionPositions[i - 1])));
+verify("Catálogo com doze cartões com fotos", (html.match(/class="product-card"/g) || []).length === 12 && (html.match(/class="product-image"/g) || []).length === 12);
+verify("Linhas de produtos depois do catálogo", html.indexOf('id="produtos"') < html.indexOf('id="linhas-produtos"'));
+verify("Navegação acompanha a ordem", js.includes('"solucoes", "sobre", "produtos", "linhas-produtos", "beneficios"'));
+verify("Logo com duas coberturas alinhadas", (html.match(/class="brand-mark"/g) || []).length === 2 && !html.includes("m6 53 19-14") && html.includes("M5 31 L40 5 L75 31"));
+verify("Atendimento usa Fale conosco", html.includes('Fale <strong>conosco</strong>') && !/Falar com vendas|Conversar com vendas|Fale com Vendas|Fale com <strong>vendas<\/strong>/i.test(html));
+verify("Botão no banner com texto e ação", html.includes('<span>Fale conosco</span>') && html.includes('data-contact="sales"'));
+
 verify("Foto da loja após banner", html.includes('class="hero-intro"') && html.includes('assets/empresa/fachada-impermeabilize.webp'));
 verify("Novas imagens de aplicação", css.includes("assets/aplicacoes/baldrames.webp") && css.includes("assets/aplicacoes/lajes.webp"));
 

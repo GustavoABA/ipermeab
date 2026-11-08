@@ -101,3 +101,11 @@ Na versão inicial, as embalagens e fotografias são carregadas de **URLs extern
 - Quinta aba renomeada para **Aditivos para concreto**, usando `#solucao-aditivos` como endereço canônico e aceitando `#solucao-capilaridade` como link antigo. Sexta aba **Fundações removida**.
 - **9 famílias de produto, total de 23 nomes**: argamassa polimérica rígida, flexível, adesivos de chapisco, aditivos impermeabilizantes, plastificantes, cristalizantes, primers epóxi, primers de substratos absorventes e não absorventes. As 12 embalagens existentes permanecem no catálogo de destaque.
 - Produtos adicionais são **referências nominais sem imagens ou promessa de estoque/disponibilidade**. Informações de uso e sistema final dependem das fichas técnicas do fabricante e da orientação profissional.
+
+## Atualização de layout — 08/11/2026
+
+- Logo no cabeçalho e rodapé: redesenho SVG com **dois telhados retos (amarelo e branco)**, sem o traço branco excedente. O favicon usa o mesmo desenho.
+- A ordem da página após o atendimento é **Nossas soluções → Quem somos → Catálogo de produtos (12 fotos) → Linhas de produtos (9 famílias, 23 referências) → Benefícios → Marcas → Dúvidas → Contato**.
+- `#produtos` aponta para o catálogo fotográfico; `#linhas-produtos` aponta para o catálogo por categorias sem imagens. Os links diretos das demais seções continuam disponíveis.
+- Chamadas comerciais visíveis usam **Fale conosco / Fale com a gente** em vez de vendas. O botão comercial desenhado no banner foi coberto por um botão HTML real com o novo rótulo, acessível e responsivo; o atendimento segue com modal **Em breve**.
+- `scripts/verificar-site.mjs` agora também verifica ordem das seções, logo, CTAs, fotos do catálogo e nomes dos links. Realizar avaliação visual mobile e desktop antes da publicação.
