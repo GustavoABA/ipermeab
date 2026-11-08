@@ -9,23 +9,65 @@ Site institucional responsivo e catálogo de soluções em impermeabilização, 
 ## O que já foi implementado
 
 - Página inicial com hero, argumentos de valor e atendimento.
-- Seis painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros, redutores de capilaridade e fundações.
+- Cinco painéis interativos: piscinas, baldrames, lajes/coberturas, banheiros elevados e aditivos para concreto, com composições de produtos em cada aba.
 - Catálogo ilustrativo com 12 produtos e filtros por marca (Sika, Vedacit, MC-Bauchemie e Dryko).
 - Informações institucionais, perguntas frequentes, seção de contato e rodapé.
-- Menu mobile, navegação por teclado nas tabs, estados acessíveis e adaptação a telas pequenas.
+- Menu mobile, navegação por teclado nas abas, estados acessíveis, adaptação a telas pequenas e URLs compartilháveis para seções e soluções.
+- Botões de atendimento abrem temporariamente uma janela “Em breve”, sem exibir erros ou configurações internas.
 
 ## Como executar
 
 Basta abrir o arquivo `index.html` em um navegador. Para desenvolver com servidor local, use qualquer servidor estático de sua preferência.
 
-## Configuração dos contatos
+## Links por área
 
-Edite `config.js` para adicionar somente dados oficiais:
+O site é uma **única página**. A URL muda para o setor visível durante a rolagem, por exemplo `#sobre`, `#produtos` ou `#contato`. Clicar em uma aba de solução gera um link individual como `#solucao-piscinas`, `#solucao-baldrames` e `#solucao-capilaridade`.
 
-- `whatsappVendas` e `whatsappTecnico`: números brasileiros com código de país, somente dígitos (`55` seguido de DDD e telefone).
-- `email`, `phoneDisplay`, `endereco`, `horario`, `instagramUrl` e `facebookUrl`.
+Os botões “Copiar link” geram o endereço completo da seção. Ao abrir uma URL de solução, a aba correspondente é selecionada automaticamente.
 
-Enquanto não houver número válido configurado, os botões de WhatsApp **não simulam um atendimento**; mostram uma mensagem de configuração pendente.
+## Imagens fornecidas
+
+O novo banner aceita a foto real da loja em Leme, SP, no caminho `assets/empresa/fachada-impermeabilize.webp`.
+
+As composições ativas de produtos usam `assets/montagens/{piscinas,baldrames,lajes,banheiros,aditivos}.webp`. Os arquivos antigos de `capilaridade` e `fundacoes` foram mantidos para histórico e referências. O catálogo e os cards responsivos utilizam imagens individuais de `assets/produtos/`.
+
+**As 19 imagens estão no repositório, na branch `ai-working`**: 1 fachada, 6 montagens e 12 embalagens. O layout pode usar as imagens locais sem depender de hospedagem externa para essas fotos.
+
+As imagens de lajes e banheiros incluem Drykocril D-9, tanto na montagem quanto nos cards móveis.
+
+As montagens são ilustrativas: os produtos não formam necessariamente um sistema único, nem substituem projeto e fichas técnicas.
+
+## Importar as fotos pelo Windows
+
+As imagens prontas também são entregues no arquivo **impermeabilize_fotos_e_montagens.zip**. **A importação já foi feita na branch `ai-working`**; o script abaixo é opcional, útil somente se for necessário restaurar ou substituir os arquivos posteriormente.
+
+No clone local deste repositório, abra o PowerShell, vá para a branch de revisão e execute:
+
+```powershell
+git switch ai-working
+.\scripts\importar-imagens.ps1 -ZipPath "$env:USERPROFILE\Downloads\impermeabilize_fotos_e_montagens.zip" -Publicar
+```
+
+Se a execução de scripts estiver bloqueada na sessão, execute sem alterar a política do sistema:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\importar-imagens.ps1 -ZipPath "$env:USERPROFILE\Downloads\impermeabilize_fotos_e_montagens.zip" -Publicar
+```
+
+O script verifica os 19 arquivos de imagem, copia para `assets/`, cria um commit apenas dos assets e envia à branch `ai-working` se `-Publicar` foi informado. **Não faz merge com a `main`**. Requer Git instalado e permissão para enviar ao repositório. Se o ZIP estiver em outro diretório, altere o caminho.
+
+## Atendimento temporário
+
+Por enquanto, todos os botões comerciais e técnicos abrem um modal **“Em breve”**, independentemente de haver número configurado. Não há envio de mensagem nem tentativa de abrir o WhatsApp. Os dados oficiais podem continuar cadastrados em `config.js` para futura ativação, mas não aparecem mensagens de diagnóstico para clientes.
+
+## Redesign dos banners e ícones (07/11/2026)
+
+- **Mobile first:** a primeira arte carregada é `assets/hero/impermeabilize-mobile.webp` (vertical, 1122×1402), e a partir de 768px o navegador usa `assets/hero/impermeabilize-desktop.webp` (horizontal, 1672×941) com `<picture>` e `<source>`.
+- Os textos e desenhos de botões já estão impressos nas duas artes aprovadas. Para não criar botões falsos, áreas posicionadas sobre os CTAs são botões HTML reais, acionam o mesmo modal **Em breve** e são acessíveis por teclado. Não adicione CTAs HTML visíveis em cima da arte.
+- A navegação por soluções passa a usar cartões adaptativos de **2 colunas (celular), 3 colunas (tablet) e 6 colunas (desktop)**. As imagens foram extraídas do painel visual aprovado em `assets/design/guia-icones.webp`, com cada ícone em seu próprio arquivo de `assets/icones/`.
+- Quatro ícones acompanham diretamente a arte gerada: piscinas, baldrames, lajes e fundações. Para manter **Banheiros elevados** e **Capilaridade** sem induzir o visitante a erro, foram criados dois desenhos SVG de traço equivalente. Os ícones originais de caixas d'água e reformas estão conservados na pasta para uso futuro, mas não substituem abas que hoje apresentam outras soluções.
+- As imagens geradas são **artes publicitárias**, não fotografias documentais; a foto verdadeira da fachada permanece em `assets/empresa/`.
+- Para conferir a responsividade, testar também em 320px, 375px, 768px, 1280px e telas ultrawide. Ao abrir os botões das artes, o modal **Em breve** deve funcionar, e as abas devem manter links individuais.
 
 ## Publicar pelo GitHub Pages
 
@@ -39,8 +81,23 @@ Consulte `REFERENCIAS_TECNICAS.md`. Os textos do site são orientativos e **não
 
 Na versão inicial, as embalagens e fotografias são carregadas de **URLs externas**, como referências visuais. Esse conteúdo pode mudar ou ficar indisponível. Antes de usar comercialmente em produção, confirme direitos de uso e disponibilidade, substitua por imagens autorizadas hospedadas em `assets/` e ajuste os endereços em `index.html` e `styles.css`.
 
+## Validação
+
+- Os 19 arquivos locais estão na branch `ai-working` (commit `4268f2f`).
+- O workflow automatizado verificou sintaxe JavaScript, seções, abas, modal e presença dos assets; execução aprovada no GitHub Actions.
+- Ainda é recomendável revisão visual em celular e desktop e conferência técnica das aplicações antes de publicar.
+
 ## Pendências comerciais
 
 - Confirmar os dados da empresa (telefones, e-mail, endereço, horários e redes).
 - Confirmar a lista exata de produtos comercializados e a disponibilidade.
 - Revisar textos finais com responsável técnico e publicar fotos autorizadas.
+
+## Feedback de 07/11/2026 — soluções e produtos
+
+- Introdução institucional com **foto original da fachada** em Leme (SP) logo após o banner responsivo.
+- Foto de **Baldrames** substituída por ilustração de vigas de fundação em obra; foto de **Lajes e coberturas** por ilustração de aplicação de manta asfáltica, em `assets/aplicacoes/`. São **imagens geradas ilustrativas, não fotografias de trabalhos da empresa**.
+- Textos de Piscinas, Baldrames, Lajes, Banheiros elevados e Aditivos para concreto revisados a partir das mensagens do cliente.
+- Quinta aba renomeada para **Aditivos para concreto**, usando `#solucao-aditivos` como endereço canônico e aceitando `#solucao-capilaridade` como link antigo. Sexta aba **Fundações removida**.
+- **9 famílias de produto, total de 23 nomes**: argamassa polimérica rígida, flexível, adesivos de chapisco, aditivos impermeabilizantes, plastificantes, cristalizantes, primers epóxi, primers de substratos absorventes e não absorventes. As 12 embalagens existentes permanecem no catálogo de destaque.
+- Produtos adicionais são **referências nominais sem imagens ou promessa de estoque/disponibilidade**. Informações de uso e sistema final dependem das fichas técnicas do fabricante e da orientação profissional.
